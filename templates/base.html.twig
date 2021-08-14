@@ -6,6 +6,7 @@
     {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
     {% block stylesheets %}
         {# {{ encore_entry_link_tags('app') }} #}
     {% endblock %}
@@ -18,35 +19,7 @@
     {% endblock %}
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="{{ path('homepage') }}">Snowtricks</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarColor03">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link active" href="{{ path('homepage') }}">Home
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">Tricks
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">Sign in
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">Sign up
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+{% include "menu.html.twig" %}
 {% block body %}{% endblock %}
 </body>
 </html>

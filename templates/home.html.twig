@@ -4,12 +4,56 @@
 
     Page Accueil
 
-{%  endblock %}
+{% endblock %}
 
 {% block body %}
 
-    <h1>{{ title }}</h1>
+    <header class="p-5 text-center bg-image" style="background-image: url('https://thumbs.dreamstime.com/b/snowboarding-closeup-jump-blue-sky-background-portrait-young-man-winter-ski-season-sports-concept-195035767.jpg');height: 85vh;">
+        <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+            <div class="d-flex justify-content-center align-items-center">
+                <div class="text-white">
+                    <h1 class="mb-3">{{ title }}</h1>
+                    <h4 class="mb-3">Subheading</h4>
+                </div>
+            </div>
+        </div>
+        <a class="btn btn-outline-light btn-lg call-to-action" href="#!" role="button">Call to action</a>
+    </header>
 
-{%  endblock %}
+    <section class="tricks mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <a href="" class="card bg-light mb-3 text-black text-decoration-none">
+                        <img src="http://placehold.it/1000x400" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="" class="card bg-light mb-3 text-black text-decoration-none">
+                        <img src="http://placehold.it/1000x400" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="" class="card bg-light mb-3 text-black text-decoration-none">
+                        <img src="http://placehold.it/1000x400" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
 
 
