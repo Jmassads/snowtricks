@@ -3,10 +3,14 @@
 namespace App\Entity;
 
 use App\Repository\TricksRepository;
+use Cocur\Slugify\Slugify;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=TricksRepository::class)
+ * @ORM\HasLifecycleCallbacks()
  */
 class Tricks
 {
@@ -31,6 +35,31 @@ class Tricks
      * @ORM\Column(type="text")
      */
     private $description;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Images::class, mappedBy="trick", orphanRemoval=true)
+     */
+    private $Images;
+
+    public function __construct()
+    {
+        $this->Images = new ArrayCollection();
+    }
+
+    /**
+     * Permet d'initialiser le slug
+     *
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
+     *
+     * @return void
+     */
+    public function initializeSlug(){
+        if(empty($this->slug)){
+            $slugify = new Slugify();
+            $this->slug = $slugify->slugify($this->title);
+        }
+    }
 
     public function getId(): ?int
     {
@@ -69,6 +98,36 @@ class Tricks
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Images[]
+     */
+    public function getImages(): Collection
+    {
+        return $this->Images;
+    }
+
+    public function addImage(Images $image): self
+    {
+        if (!$this->Images->contains($image)) {
+            $this->Images[] = $image;
+            $image->setTrick($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(Images $image): self
+    {
+        if ($this->Images->removeElement($image)) {
+            // set the owning side to null (unless already changed)
+            if ($image->getTrick() === $this) {
+                $image->setTrick(null);
+            }
+        }
 
         return $this;
     }
