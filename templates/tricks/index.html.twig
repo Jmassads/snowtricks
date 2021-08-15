@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos Tricks{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="my-3">Voici les tricks</h1>
+        <section class="tricks mt-5">
+            <div class="container">
+                <div class="row">
+                    {% for trick in tricks %}
+                    <div class="col-md-4">
+                        <a href="" class="card bg-light mb-3 text-black text-decoration-none">
+                            <img src="{{ trick.coverImage }}" alt="">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    {{ trick.title }}
+                                </h5>
+                                <p class="card-text">
+                                    {{ trick.description|striptags|slice(0, 40) }}
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    </div>
+
+{% endblock %}

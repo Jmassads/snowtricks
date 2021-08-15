@@ -23,33 +23,21 @@
     <section class="tricks mt-5">
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
-                    <a href="" class="card bg-light mb-3 text-black text-decoration-none">
-                        <img src="http://placehold.it/1000x400" alt="">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-4">
-                    <a href="" class="card bg-light mb-3 text-black text-decoration-none">
-                        <img src="http://placehold.it/1000x400" alt="">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-4">
-                    <a href="" class="card bg-light mb-3 text-black text-decoration-none">
-                        <img src="http://placehold.it/1000x400" alt="">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                    </a>
-                </div>
+                {% for trick in tricks %}
+                    <div class="col-md-4">
+                        <a href="{{ path('tricks_show', {'slug' : trick.slug}) }}" class="card bg-light mb-3 text-black text-decoration-none">
+                            <img src="{{ trick.coverImage }}" alt="">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    {{ trick.title }}
+                                </h5>
+                                <p class="card-text">
+                                    {{ trick.description|striptags|slice(0, 40) }}
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </section>

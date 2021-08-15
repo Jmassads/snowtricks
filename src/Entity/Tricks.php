@@ -41,6 +41,11 @@ class Tricks
      */
     private $Images;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $coverImage;
+
     public function __construct()
     {
         $this->Images = new ArrayCollection();
@@ -128,6 +133,18 @@ class Tricks
                 $image->setTrick(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCoverImage(): ?string
+    {
+        return $this->coverImage;
+    }
+
+    public function setCoverImage(?string $coverImage): self
+    {
+        $this->coverImage = $coverImage;
 
         return $this;
     }

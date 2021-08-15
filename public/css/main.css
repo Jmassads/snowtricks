@@ -11,10 +11,33 @@ header {
     padding: 2rem 4rem;
 }
 
+img {
+    max-width: 100%;
+}
+
+.container {
+   margin-top: 20px;
+}
+
 .call-to-action {
     position: absolute;
     bottom: 20px;
     right: 20px;
     z-index: 10;
 }
+
+.trick-title {
+    background-size: cover;
+    background-position: center center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    padding: 2em;
+    color: white;
+    text-shadow: 3px 3px 3px rgba(0,0,0,0.5);
+    text-align: center;
+}
+
+
 

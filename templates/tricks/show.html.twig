@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ trick.title }}{% endblock %}
+
+{% block body %}
+    <div class="trick-title" style="background-image: url({{ trick.coverImage }})">
+        <div class="container">
+            <h1>{{ trick.title }}</h1>
+        </div>
+    </div>
+    <div class="container">
+        <ul id="lightSlider">
+            {% for image in trick.images %}
+                <li>
+                    <div><img src="{{ image.url }}" alt=""></div>
+                    <h3>First Slide</h3>
+                    <p>Lorem ipsum Cupidatat quis pariatur anim.</p>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="container">
+        <div class="row">
+            <p>{{ trick.description | raw }}</p>
+        </div>
+    </div>
+{% endblock %}

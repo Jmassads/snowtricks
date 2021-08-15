@@ -17,7 +17,7 @@ class TricksFixtures extends Fixture
         $faker = Factory::create('FR-fr');
         $slugify = new Slugify();
 
-        for ($i = 1; $i <= 20; $i++) {
+        for ($i = 1; $i <= 10; $i++) {
             $trick = new Tricks();
 
             $title = $faker->sentence();
@@ -27,6 +27,7 @@ class TricksFixtures extends Fixture
             $trick
                 ->setTitle($title)
 //                ->setSlug($slug)
+                ->setCoverImage($faker->imageUrl(1000,350))
                 ->setDescription($description);
 
             for ($j = 1; $j <= mt_rand(2, 5); $j++) {
