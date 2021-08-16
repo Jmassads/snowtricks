@@ -32,5 +32,18 @@ $(document).ready(function() {
         console.log(tmpl);
         //j'injecte ce code au sein de la div
         $('#trick_images').append(tmpl);
+
+        //Je gere le bouton supprimer
+        handleDeleteButtons();
     });
+
+    function handleDeleteButtons(){
+        $('button[data-action="delete"]').click(function(){
+            const target = this.dataset.target;
+            console.log(target);
+            $(target).remove();
+        })
+    }
+
+    handleDeleteButtons();
 });
