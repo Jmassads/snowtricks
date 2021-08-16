@@ -38,13 +38,19 @@ class TricksController extends AbstractController
         $trick = new Tricks();
         $form = $this->createForm(TrickType::class, $trick);
         $form->handleRequest($request);
+
+
+
         dump($trick);
 
         if ($form->isSubmitted() && $form->isValid()) {
 //            $manager = $this->getDoctrine()->getManager();
             $manager->persist($trick);
             $manager->flush();
-
+            $this->addFlash(
+                'success',
+                "La figure <strong>{$trick->getTitle()}</strong> a bien été enregistrée"
+            );
 
             return $this->redirectToRoute('tricks_show', [
                 'slug' => $trick->getSlug()
