@@ -9,6 +9,7 @@
         <h1>Créer une nouvelle figure</h1>
         {{ form_start(form) }}
         {{ form_widget(form) }}
+        <input type="hidden" id="widgets-counter" value="0">
         <button type="submit" class="btn btn-primary">Créer la figure</button>
         {{ form_end(form) }}
     </div>

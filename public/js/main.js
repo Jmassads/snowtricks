@@ -26,13 +26,16 @@ $(document).ready(function() {
 
     $('#add-image').click(function () {
         //Je recupere le numero des futurs champs que je vais creer
-        const index = $('#trick_images .form-group').length
+        const index = +$('#widgets-counter').val();
+
+        console.log(index);
         // Je recupere le prototype des entrees
         const tmpl = $('#trick_images').data('prototype').replace(/__name__/g, index);
-        console.log(tmpl);
+        // console.log(tmpl);
+
         //j'injecte ce code au sein de la div
         $('#trick_images').append(tmpl);
-
+        $('#widgets-counter').val(index + 1);
         //Je gere le bouton supprimer
         handleDeleteButtons();
     });
