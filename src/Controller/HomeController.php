@@ -17,8 +17,6 @@ class HomeController extends AbstractController {
      */
     public function home(TricksRepository $repo)
     {
-
-//        $repo = $this->getDoctrine()->getRepository(Tricks::class);
         $tricks = $repo->findAll();
         return $this->render(
             'home.html.twig',

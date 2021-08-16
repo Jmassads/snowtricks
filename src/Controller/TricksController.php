@@ -37,17 +37,6 @@ class TricksController extends AbstractController
     public function create(Request $request, EntityManagerInterface $manager)
     {
         $trick = new Tricks();
-//        $image = new Images();
-//
-//        $image->setUrl('http://placehold.it/400X200')
-//            ->setCaption('Titre 1');
-//        $trick->addImage($image);
-//        $image2 = new Images();
-//
-//        $image2->setUrl('http://placehold.it/400X200')
-//            ->setCaption('Titre 2');
-//        $trick->addImage($image2);
-
         $form = $this->createForm(TrickType::class, $trick);
         $form->handleRequest($request);
 
@@ -56,7 +45,7 @@ class TricksController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 //            $manager = $this->getDoctrine()->getManager();
-            foreach($trick->getImages() as $image){
+            foreach ($trick->getImages() as $image) {
                 $image->setTrick($trick);
                 $manager->persist($image);
             }
@@ -73,6 +62,41 @@ class TricksController extends AbstractController
         }
         return $this->render('tricks/new.html.twig', [
             'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * Permet d'afficher le formulaire d'édition
+     * @Route("/trick/{slug}/edit", name="tricks_edit")
+     * @param Tricks $trick
+     * @param Request $request
+     * @param EntityManagerInterface $manager
+     * @return Response
+     */
+    public function edit(Tricks $trick, Request $request, EntityManagerInterface $manager): Response
+    {
+        $form = $this->createForm(TrickType::class, $trick);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+//            $manager = $this->getDoctrine()->getManager();
+            foreach ($trick->getImages() as $image) {
+                $image->setTrick($trick);
+                $manager->persist($image);
+            }
+            $manager->persist($trick);
+            $manager->flush();
+            $this->addFlash(
+                'success',
+                "La figure <strong>{$trick->getTitle()}</strong> a bien été modifiée"
+            );
+
+            return $this->redirectToRoute('tricks_show', [
+                'slug' => $trick->getSlug()
+            ]);
+        }
+        return $this->render('tricks/edit.html.twig', [
+            'form' => $form->createView(),
+            'trick' => $trick
         ]);
     }
 
