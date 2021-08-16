@@ -20,9 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4038b30b-f877-485f-85b2-4b10a6dcca0b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/templates/partials/footer.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/TricksController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TricksController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/TrickType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/TrickType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/menu.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/header.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/tricks/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tricks/new.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,6 +192,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/templates/partials" />
       <recent name="$PROJECT_DIR$/public/js" />
       <recent name="$PROJECT_DIR$/public/css" />
     </key>
@@ -216,7 +221,7 @@
       <workItem from="1628872742492" duration="729000" />
       <workItem from="1628873506956" duration="3014000" />
       <workItem from="1628928836934" duration="1512000" />
-      <workItem from="1628930447676" duration="33977000" />
+      <workItem from="1628930447676" duration="37316000" />
     </task>
     <servers />
   </component>

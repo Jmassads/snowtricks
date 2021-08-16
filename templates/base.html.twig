@@ -22,17 +22,8 @@
     {% endblock %}
 </head>
 <body>
-{% include "menu.html.twig" %}
-{% for label, message in app.flashes %}
-    <div class="container">
-        <div class="alert alert-{{ label }}">
-            {% for message in message %}
-                <p>{{ message | raw }}</p>
-            {% endfor %}
-        </div>
-    </div>
-{% endfor %}
-{#{{ dump(app.flashes) }}#}
+{% include "partials/header.html.twig" %}
 {% block body %}{% endblock %}
+{% include "partials/footer.html.twig" %}
 </body>
 </html>

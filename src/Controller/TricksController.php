@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Images;
 use App\Entity\Tricks;
 use App\Form\TrickType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -36,9 +37,19 @@ class TricksController extends AbstractController
     public function create(Request $request, EntityManagerInterface $manager)
     {
         $trick = new Tricks();
+        $image = new Images();
+
+        $image->setUrl('http://placehold.it/400X200')
+            ->setCaption('Titre 1');
+        $trick->addImage($image);
+        $image2 = new Images();
+
+        $image2->setUrl('http://placehold.it/400X200')
+            ->setCaption('Titre 2');
+        $trick->addImage($image2);
+
         $form = $this->createForm(TrickType::class, $trick);
         $form->handleRequest($request);
-
 
 
         dump($trick);
