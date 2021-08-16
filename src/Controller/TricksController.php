@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Tricks;
+use App\Form\TrickType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Response;
@@ -29,17 +30,7 @@ class TricksController extends AbstractController
     public function create()
     {
         $trick = new Tricks();
-        $form = $this->createFormBuilder($trick)
-            ->add('title')
-            ->add('description')
-            ->add('coverImage')
-            ->add('save', SubmitType::class, [
-                'label' => 'Créer la nouvelle figure',
-                'attr' => [
-                    'class' => 'btn btn-primary'
-                ]
-            ])
-            ->getForm();
+        $form = $this->createForm(TrickType::class, $trick);
         return $this->render('tricks/new.html.twig', [
             'form' => $form->createView()
         ]);

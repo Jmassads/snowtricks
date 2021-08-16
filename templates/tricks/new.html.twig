@@ -2,11 +2,14 @@
 
 {% block title %}Création d'une figure{% endblock %}
 
+
 {% block body %}
-
-
     <div class="container">
         <h1>Créer une nouvelle figure</h1>
-        {{ form(form) }}
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button type="submit" class="btn btn-primary">Créer la figure</button>
+        {{ form_end(form) }}
     </div>
 {% endblock %}
+
