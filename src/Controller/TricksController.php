@@ -4,8 +4,11 @@ namespace App\Controller;
 
 use App\Entity\Tricks;
 use App\Form\TrickType;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -26,11 +29,22 @@ class TricksController extends AbstractController
     /**
      * Permet de créer une annonce
      * @Route("/tricks/new", name="tricks_create")
+     * @param Request $request
+     * @param ObjectManager $manager
+     * @return Response
      */
-    public function create()
+    public function create(Request $request, EntityManagerInterface $manager)
     {
         $trick = new Tricks();
         $form = $this->createForm(TrickType::class, $trick);
+        $form->handleRequest($request);
+        dump($trick);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+//            $manager = $this->getDoctrine()->getManager();
+            $manager->persist($trick);
+            $manager->flush();
+        }
         return $this->render('tricks/new.html.twig', [
             'form' => $form->createView()
         ]);

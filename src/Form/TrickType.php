@@ -32,8 +32,8 @@ class TrickType extends AbstractType
         $builder
             ->add('title', TextType::class, $this->getConfiguration('Titre', 'Veuillez tapez un super titre pour votre figure!'))
             ->add('slug', TextType::class, $this->getConfiguration('Adresse web', "Tapez l'adresse web (automatique)"))
-            ->add('description', TextareaType::class, $this->getConfiguration('Titre', 'Tapez une description détaillée pour votre figure!'))
-            ->add('coverImage', UrlType::class, $this->getConfiguration('Url de l\image', 'Donnez l\'adresse web d\'une image pour votre figure!'));
+            ->add('description', TextareaType::class, $this->getConfiguration('Description', 'Tapez une description détaillée pour votre figure!'))
+            ->add('coverImage', UrlType::class, $this->getConfiguration('Url de l\'image', 'Donnez l\'adresse web d\'une image pour votre figure!'));
     }
 
     public function configureOptions(OptionsResolver $resolver)
