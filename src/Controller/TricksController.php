@@ -44,6 +44,11 @@ class TricksController extends AbstractController
 //            $manager = $this->getDoctrine()->getManager();
             $manager->persist($trick);
             $manager->flush();
+
+
+            return $this->redirectToRoute('tricks_show', [
+                'slug' => $trick->getSlug()
+            ]);
         }
         return $this->render('tricks/new.html.twig', [
             'form' => $form->createView()
