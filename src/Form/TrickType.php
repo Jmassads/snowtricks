@@ -37,7 +37,8 @@ class TrickType extends AbstractType
             ->add('coverImage', UrlType::class, $this->getConfiguration('Url de l\'image', 'Donnez l\'adresse web d\'une image pour votre figure!'))
             ->add('images', Collectiontype::class,
                 [
-                    'entry_type' => ImageType::class
+                    'entry_type' => ImageType::class,
+                    'allow_add' => true
                 ]
             );
     }

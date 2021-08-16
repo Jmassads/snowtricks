@@ -23,4 +23,14 @@ $(document).ready(function() {
             }
         ]
     });
+
+    $('#add-image').click(function () {
+        //Je recupere le numero des futurs champs que je vais creer
+        const index = $('#trick_images .form-group').length
+        // Je recupere le prototype des entrees
+        const tmpl = $('#trick_images').data('prototype').replace(/__name__/g, index);
+        console.log(tmpl);
+        //j'injecte ce code au sein de la div
+        $('#trick_images').append(tmpl);
+    });
 });
