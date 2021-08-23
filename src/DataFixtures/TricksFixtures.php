@@ -9,9 +9,20 @@ use Cocur\Slugify\Slugify;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoder;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class TricksFixtures extends Fixture
+
 {
+    private $encoder;
+
+    public function __construct(UserPasswordEncoderInterface $encoder)
+    {
+        $this->encoder = $encoder;
+    }
+
     public function load(ObjectManager $manager)
     {
 
@@ -19,20 +30,29 @@ class TricksFixtures extends Fixture
         $slugify = new Slugify();
 
         $users = [];
+        $genres = ['male', 'female'];
+        $genre = $faker->randomElement($genres);
 
-
-        // Nous gerons les utilisateurs
+        $picture = 'https://randomuser.me/api/portraits/';
+        $pictureId = $faker->numberBetween(1, 90) . 'jpg';
+        if ($genre == "male") {
+            $picture = $picture . 'men/' . $pictureId;
+        } else {
+            $picture = $picture . 'women/' . $pictureId;
+        }
+        // Nous gérons les utilisateurs
         for ($i = 1; $i <= 10; $i++) {
             $user = new Users();
             $description = '<p>' . join($faker->paragraphs(5)) . '</p>';
 
-            $user->setFirstName($faker->firstName)
+            $hash = $this->encoder->encodePassword($user, 'password');
+            $user->setFirstName($faker->firstName($genre))
                 ->setLastName($faker->lastName)
-                ->setPicture($faker->imageUrl(1000, 350))
+                ->setPicture($picture)
                 ->setEmail($faker->email)
                 ->setIntroduction($faker->sentence())
                 ->setDescription($description)
-                ->setHash('password');
+                ->setHash($hash);
 
             $manager->persist($user);
             $users[] = $user;

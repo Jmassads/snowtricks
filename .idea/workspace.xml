@@ -21,8 +21,9 @@
   <component name="ChangeListManager">
     <list default="true" id="4038b30b-f877-485f-85b2-4b10a6dcca0b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DataFixtures/TricksFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/TricksFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Tricks.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Tricks.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Users.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Users.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,6 +185,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -217,7 +219,7 @@
       <workItem from="1628872742492" duration="729000" />
       <workItem from="1628873506956" duration="3014000" />
       <workItem from="1628928836934" duration="1512000" />
-      <workItem from="1628930447676" duration="48930000" />
+      <workItem from="1628930447676" duration="58393000" />
     </task>
     <servers />
   </component>
@@ -240,6 +242,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="726" y="166" key="#com.intellij.ide.util.MemberChooser" timestamp="1629757045145">
+      <screen x="0" y="23" width="1440" height="835" />
+    </state>
+    <state x="726" y="166" key="#com.intellij.ide.util.MemberChooser/0.23.1440.835@0.23.1440.835" timestamp="1629757045145" />
     <state x="721" y="268" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1629131958171">
       <screen x="0" y="23" width="1440" height="835" />
     </state>
