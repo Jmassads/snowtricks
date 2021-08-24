@@ -22,7 +22,7 @@ class TricksController extends AbstractController
     {
         $repo = $this->getDoctrine()->getRepository(Tricks::class);
         $tricks = $repo->findAll();
-        return $this->render('tricks/index.html.twig', [
+        return $this->render('tricks/login.html.twig', [
             'tricks' => $tricks,
         ]);
     }
