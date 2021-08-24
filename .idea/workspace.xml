@@ -22,7 +22,7 @@
     <list default="true" id="4038b30b-f877-485f-85b2-4b10a6dcca0b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/TricksController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TricksController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/AccountController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AccountController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -218,7 +218,7 @@
       <workItem from="1628872742492" duration="729000" />
       <workItem from="1628873506956" duration="3014000" />
       <workItem from="1628928836934" duration="1512000" />
-      <workItem from="1628930447676" duration="60509000" />
+      <workItem from="1628930447676" duration="60871000" />
     </task>
     <servers />
   </component>
