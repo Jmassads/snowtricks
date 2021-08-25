@@ -5,6 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class AccountController extends AbstractController
 {
@@ -12,12 +13,19 @@ class AccountController extends AbstractController
      * Permet d'afficher et de gérer le formulaire de connexion
      * @Route("/login", name="account_login")
      *
+     * @param AuthenticationUtils $utils
      * @return Response
      */
-    public function login(): Response
+    public function login(AuthenticationUtils $utils): Response
     {
-        return $this->render('account/login.html.twig', [
+        $error = $utils->getLastAuthenticationError();
+        $username = $utils->getLastUsername();
 
+//        dump($error);
+
+        return $this->render('account/login.html.twig', [
+            'hasError' => $error !== null,
+            'username' => $username
         ]);
     }
 
