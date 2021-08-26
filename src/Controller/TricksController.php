@@ -49,6 +49,9 @@ class TricksController extends AbstractController
                 $image->setTrick($trick);
                 $manager->persist($image);
             }
+
+            $trick->setAuthor($this->getUser());
+
             $manager->persist($trick);
             $manager->flush();
             $this->addFlash(
