@@ -62,9 +62,15 @@ class Users implements UserInterface
     private $hash;
 
     /**
+     * @Assert\EqualTo(propertyPath="hash", message="Vous n'avez pas pas correctement confirmé votre mot de passe")
+     */
+    public $passwordConfirm;
+
+    /**
      * @ORM\Column(type="string", length=255)
      * @Assert\Length(min=10, minMessage="Votre introduction doit faire au moins 10 caractères")
      */
+
     private $introduction;
 
     /**
