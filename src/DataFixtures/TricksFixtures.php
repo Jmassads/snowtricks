@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Images;
+use App\Entity\Role;
 use App\Entity\Tricks;
 use App\Entity\Users;
 use Cocur\Slugify\Slugify;
@@ -27,6 +28,22 @@ class TricksFixtures extends Fixture
     {
 
         $faker = Factory::create('FR-fr');
+        $adminRole = new Role();
+        $adminRole->setTitle('ROLE_ADMIN');
+        $manager->persist($adminRole);
+        $description = '<p>' . join($faker->paragraphs(5)) . '</p>';
+        $adminUser = new Users();
+        $adminUser
+            ->setFirstName('Julia')
+            ->setLastName('Assad')
+            ->setEmail('juliasajah85@gmail.com')
+            ->setHash($this->encoder->encodePassword($adminUser, 'password'))
+            ->setPicture('https://avatars0.githubusercontent.com/u/22447803?s=400&u=453226f708a7c2242a639882fde1ec32ffa78918&v=4')
+            ->setIntroduction($faker->sentence)
+            ->setDescription($description)
+            ->addUserRole($adminRole);
+        $manager->persist($adminUser);
+
         $slugify = new Slugify();
 
         $users = [];

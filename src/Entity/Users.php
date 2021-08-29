@@ -89,9 +89,15 @@ class Users implements UserInterface
      */
     private $tricks;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Role::class, mappedBy="users")
+     */
+    private $userRoles;
+
     public function __construct()
     {
         $this->tricks = new ArrayCollection();
+        $this->userRoles = new ArrayCollection();
     }
 
     public function getFullName(){
@@ -246,7 +252,15 @@ class Users implements UserInterface
 
     public function getRoles()
     {
-        return ['ROLE_USER'];
+        $roles = $this->userRoles->toArray();
+//        dump($roles);
+        $roles = $this->userRoles->map(function($role){
+            return $role->getTitle();
+        })->toArray();
+        $roles[] = 'ROLE_USER';
+//        dump($roles);
+//        die();
+        return $roles;
     }
 
     public function getPassword()
@@ -272,5 +286,32 @@ class Users implements UserInterface
     public function __call($name, $arguments)
     {
         // TODO: Implement @method string getUserIdentifier()
+    }
+
+    /**
+     * @return Collection|Role[]
+     */
+    public function getUserRoles(): Collection
+    {
+        return $this->userRoles;
+    }
+
+    public function addUserRole(Role $userRole): self
+    {
+        if (!$this->userRoles->contains($userRole)) {
+            $this->userRoles[] = $userRole;
+            $userRole->addUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUserRole(Role $userRole): self
+    {
+        if ($this->userRoles->removeElement($userRole)) {
+            $userRole->removeUser($this);
+        }
+
+        return $this;
     }
 }
