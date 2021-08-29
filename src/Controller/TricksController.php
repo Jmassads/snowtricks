@@ -12,6 +12,8 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class TricksController extends AbstractController
 {
@@ -30,6 +32,7 @@ class TricksController extends AbstractController
     /**
      * Permet de créer une annonce
      * @Route("/tricks/new", name="tricks_create")
+     * @IsGranted("ROLE_USER")
      * @param Request $request
      * @param ObjectManager $manager
      * @return Response
@@ -71,6 +74,7 @@ class TricksController extends AbstractController
     /**
      * Permet d'afficher le formulaire d'édition
      * @Route("/trick/{slug}/edit", name="tricks_edit")
+     * @Security("is_granted('ROLE_USER') and user === trick.getAuthor()")
      * @param Tricks $trick
      * @param Request $request
      * @param EntityManagerInterface $manager
