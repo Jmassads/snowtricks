@@ -12,7 +12,9 @@
         <ul id="lightSlider">
             {% for image in trick.images %}
                 <li>
-                    <div><img src="{{ image.url }}" alt=""></div>
+                    <div>
+                        <img src="{{ image.url }}" alt="">
+                    </div>
                 </li>
             {% endfor %}
         </ul>
@@ -20,6 +22,23 @@
     <div class="container">
         <div class="row">
             <p>{{ trick.description | raw }}</p>
+        </div>
+        <div class="row mb-3 align-items-center">
+            {% set a = trick.author %}
+            <div class="col-1">
+                <a href="{{ path('user_show', {'slug': a.slug}) }}">
+                    <img class="avatar avatar-medium" src="{{ trick.author.picture }}" alt="Avatar de {{ a.fullName }}">
+                </a>
+            </div>
+            <div class="col-9">
+                <a href="{{ path('user_show', {'slug': a.slug}) }}">
+                    <h3>{{ a.fullName }}</h3>
+                </a>
+                <span class="badge bg-secondary">{{ a.tricks | length}} création(s) de figure</span>
+            </div>
+        </div>
+        <div class="row">
+            {{ a.description | raw}}
         </div>
     </div>
 {% endblock %}

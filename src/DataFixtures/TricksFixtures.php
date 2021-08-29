@@ -34,7 +34,7 @@ class TricksFixtures extends Fixture
         $genre = $faker->randomElement($genres);
 
         $picture = 'https://randomuser.me/api/portraits/';
-        $pictureId = $faker->numberBetween(1, 90) . 'jpg';
+        $pictureId = $faker->numberBetween(1, 90) . '.jpg';
         if ($genre == "male") {
             $picture = $picture . 'men/' . $pictureId;
         } else {
@@ -67,7 +67,7 @@ class TricksFixtures extends Fixture
 
             $trick
                 ->setTitle($title)
-                ->setCoverImage($faker->imageUrl(1000, 350))
+                ->setCoverImage($faker->imageUrl(1920, 350))
                 ->setDescription($description)
                 ->setAuthor($user);
 

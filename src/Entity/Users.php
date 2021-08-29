@@ -50,7 +50,7 @@ class Users implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Email(
+     * @Assert\NotBlank (
      *     message="Veuillez donner une URL valide pour votre avatar"
      * )
      */
@@ -94,6 +94,9 @@ class Users implements UserInterface
         $this->tricks = new ArrayCollection();
     }
 
+    public function getFullName(){
+        return "{$this->firstName} {$this->LastName}";
+    }
 
     /**
      * Permet d'initialiser le slug
