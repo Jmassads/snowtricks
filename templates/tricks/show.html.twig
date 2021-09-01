@@ -34,11 +34,17 @@
                 <a href="{{ path('user_show', {'slug': a.slug}) }}">
                     <h3>{{ a.fullName }}</h3>
                 </a>
-                <span class="badge bg-secondary">{{ a.tricks | length}} création(s) de figure</span>
+                <span class="badge bg-secondary">{{ a.tricks | length }} création(s) de figure</span>
             </div>
         </div>
         <div class="row">
-            {{ a.description | raw}}
+            {{ a.description | raw }}
         </div>
+        {% if app.user and app.user == trick.author %}
+            <a href="{{ path('tricks_edit', {'slug': trick.slug}) }}" class="btn btn-secondary">
+                Modifier le figure
+            </a>
+            <a href="{{ path('tricks_delete', {'slug': trick.slug}) }}" class="btn btn-danger" onclick="return confirm(`Souhaitez vous supperimer votre figure : {{ trick.title }}`)" >Supprimer la figure</a>
+        {% endif %}
     </div>
 {% endblock %}

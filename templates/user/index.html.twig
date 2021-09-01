@@ -33,9 +33,9 @@
                 {% for trick in user.tricks %}
 
                         <li>
-                            <div>
+                            <a href="{{ path('tricks_show', {'slug': trick.slug})}}">
                                 <img src="{{ trick.coverImage }}" alt="image">
-                            </div>
+                            </a>
                         </li>
                 {% endfor %}
                 </ul>

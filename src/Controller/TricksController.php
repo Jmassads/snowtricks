@@ -107,4 +107,23 @@ class TricksController extends AbstractController
         ]);
     }
 
+    /**
+     * Permet de supprimer une figure
+     * @Route("/trick/{slug}/delete", name="tricks_delete")
+     * @Security("is_granted('ROLE_USER') and user === trick.getAuthor()", message="Vous n'avez pas le droit d'accéder à cette figure")
+     * @param Tricks $trick
+     * @param EntityManagerInterface $manager
+     * @return Response
+     */
+    public function delete(Tricks $trick, EntityManagerInterface $manager){
+        $manager->remove($trick);
+        $manager->flush();
+
+        $this->addFlash(
+            'success',
+            "La figure <strong>{$trick->getTitle()}</strong> a bien été supprimée"
+        );
+
+        return $this->redirectToRoute("account_index");
+    }
 }
