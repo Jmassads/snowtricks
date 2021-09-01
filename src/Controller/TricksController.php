@@ -17,17 +17,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class TricksController extends AbstractController
 {
-    /**
-     * @Route("/tricks", name="tricks_index")
-     */
-    public function index(): Response
-    {
-        $repo = $this->getDoctrine()->getRepository(Tricks::class);
-        $tricks = $repo->findAll();
-        return $this->render('tricks/login.html.twig', [
-            'tricks' => $tricks,
-        ]);
-    }
+
 
     /**
      * Permet de créer une annonce

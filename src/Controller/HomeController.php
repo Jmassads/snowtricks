@@ -31,12 +31,12 @@ class HomeController extends AbstractController {
      * Permet d'afficher un seule figure
      * @Route("/trick/{slug}", name="tricks_show")
      * @param $slug
-     * @param TricksRepository $repo
+     * @param Tricks $trick
      * @return Response
      */
-    public function show($slug, TricksRepository $repo){
+    public function show($slug, Tricks $trick){
         // Je récupère le trick qui correspond au slug
-        $trick = $repo->findOneBySlug($slug);
+//        $trick = $repo->findOneBySlug($slug);
         return $this->render('tricks/show.html.twig', [
             'trick' => $trick
         ]);
