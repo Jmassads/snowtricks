@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Comment;
 use App\Entity\Images;
 use App\Entity\Role;
 use App\Entity\Tricks;
@@ -86,7 +87,9 @@ class TricksFixtures extends Fixture
                 ->setTitle($title)
                 ->setCoverImage($faker->imageUrl(1920, 350))
                 ->setDescription($description)
-                ->setAuthor($user);
+                ->setAuthor($user)
+                ->setCreatedAt(new \DateTimeImmutable());
+
 
 
             for ($j = 1; $j <= mt_rand(2, 5); $j++) {
@@ -99,6 +102,17 @@ class TricksFixtures extends Fixture
                 $manager->persist($image);
             }
             $manager->persist($trick);
+
+            // Gestion de commentaires
+            if(mt_rand(0,1)){
+                $comment = new Comment();
+                $comment->setContent($faker->paragraph())
+                        ->setAuthor($user)
+                        ->setTrick($trick);
+
+                $manager->persist($comment);
+            }
+
         }
         $manager->flush();
     }

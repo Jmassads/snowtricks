@@ -3,10 +3,24 @@
 {% block title %}{{ trick.title }}{% endblock %}
 
 {% block body %}
-    <div class="trick-title" style="background-image: url({{ trick.coverImage }})">
+    <div class="trick-cover" style="background-image: url({{ trick.coverImage }})">
         <div class="container">
             <h1>{{ trick.title }}</h1>
         </div>
+{#        {{ dump(app.user.roles) }}#}
+{#        {{ dump(app.user.roles[0]) }}#}
+
+        {% if app.user and (app.user == trick.author or app.user.roles[0] == "ROLE_ADMIN")%}
+            <div class="trick-actions">
+
+                <a href="{{ path('tricks_edit', {'slug': trick.slug}) }}" class="btn btn-secondary">
+                    <i class="fas fa-edit"></i>
+                </a>
+                <a href="{{ path('tricks_delete', {'slug': trick.slug}) }}" class="btn btn-danger" onclick="return confirm(`Souhaitez vous supperimer votre figure : {{ trick.title }}`)" >
+                    <i class="fas fa-trash-alt"></i>
+                </a>
+            </div>
+        {% endif %}
     </div>
     <div class="container">
         <ul id="lightSlider">
@@ -40,11 +54,31 @@
         <div class="row">
             {{ a.description | raw }}
         </div>
-        {% if app.user and app.user == trick.author %}
-            <a href="{{ path('tricks_edit', {'slug': trick.slug}) }}" class="btn btn-secondary">
-                Modifier le figure
-            </a>
-            <a href="{{ path('tricks_delete', {'slug': trick.slug}) }}" class="btn btn-danger" onclick="return confirm(`Souhaitez vous supperimer votre figure : {{ trick.title }}`)" >Supprimer la figure</a>
+
+        <hr>
+
+        {% if trick.comments|length > 0 %}
+            <h2 class="mb-3">Commentaires de nos utilisateurs:</h2>
+            {%  for comment in trick.comments|sort|reverse %}
+                <div class="bg-light rounded mb-3 py-3 px-3">
+                    <strong>{{  comment.author.fullName }}</strong> a dit :
+                    <blockquote>
+                        {{ comment.content }}
+                    </blockquote>
+                </div>
+            {%  endfor %}
+        {% else %}
+            <h2>Cette figure n'a pas encore reçu de commentaires...</h2>
         {% endif %}
+
+        {% if app.user %}
+        <div class="mt-4">
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <button type="submit" class="btn btn-success">Envoyez votre commentaire</button>
+            {{ form_end(form) }}
+        </div>
+        {% endif %}
+
     </div>
 {% endblock %}

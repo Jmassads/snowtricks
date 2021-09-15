@@ -24,7 +24,7 @@
         <div class="container">
             <div class="row">
                 {% for trick in tricks %}
-                    <div class="col-md-4">
+                    <div class="col-md-4 trick">
                         <a href="{{ path('tricks_show', {'slug' : trick.slug}) }}" class="card bg-light mb-3 text-black text-decoration-none">
                             <img src="{{ trick.coverImage }}" alt="">
                             <div class="card-body">
@@ -36,9 +36,21 @@
                                 </p>
                             </div>
                         </a>
+                        {% if app.user and (app.user == trick.author or app.user.roles[0] == "ROLE_ADMIN") %}
+                            <div class="trick-actions">
+
+                                <a href="{{ path('tricks_edit', {'slug': trick.slug}) }}" class="btn btn-secondary">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a href="{{ path('tricks_delete', {'slug': trick.slug}) }}" class="btn btn-danger" onclick="return confirm(`Souhaitez vous supperimer votre figure : {{ trick.title }}`)" >
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </div>
+                        {% endif %}
                     </div>
                 {% endfor %}
             </div>
+            <button class="load-more" accesskey="m">Load more</button>
         </div>
     </section>
 

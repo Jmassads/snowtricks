@@ -64,7 +64,7 @@ class TricksController extends AbstractController
     /**
      * Permet d'afficher le formulaire d'édition
      * @Route("/trick/{slug}/edit", name="tricks_edit")
-     * @Security("is_granted('ROLE_USER') and user === trick.getAuthor()")
+     * @Security("(is_granted('ROLE_USER') and user === trick.getAuthor()) or is_granted('ROLE_ADMIN')")
      * @param Tricks $trick
      * @param Request $request
      * @param EntityManagerInterface $manager
@@ -100,7 +100,7 @@ class TricksController extends AbstractController
     /**
      * Permet de supprimer une figure
      * @Route("/trick/{slug}/delete", name="tricks_delete")
-     * @Security("is_granted('ROLE_USER') and user === trick.getAuthor()", message="Vous n'avez pas le droit d'accéder à cette figure")
+     * @Security("(is_granted('ROLE_USER') and user === trick.getAuthor()) or is_granted('ROLE_ADMIN')")
      * @param Tricks $trick
      * @param EntityManagerInterface $manager
      * @return Response
