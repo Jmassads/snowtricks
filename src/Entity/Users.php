@@ -291,21 +291,6 @@ class Users implements UserInterface
         return $this->hash;
     }
 
-    public function getSalt()
-    {
-        // TODO: Implement getSalt() method.
-    }
-
-    public function eraseCredentials()
-    {
-        // TODO: Implement eraseCredentials() method.
-    }
-
-    public function __call($name, $arguments)
-    {
-        // TODO: Implement @method string getUserIdentifier()
-    }
-
     /**
      * @return Collection|Role[]
      */

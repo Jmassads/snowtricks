@@ -23,9 +23,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4038b30b-f877-485f-85b2-4b10a6dcca0b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/robots.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Users.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Users.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -249,7 +249,7 @@
       <workItem from="1633539535183" duration="3682000" />
       <workItem from="1633604298823" duration="420000" />
       <workItem from="1634047737086" duration="530000" />
-      <workItem from="1634052505479" duration="721000" />
+      <workItem from="1634052505479" duration="1168000" />
     </task>
     <servers />
   </component>
@@ -284,14 +284,14 @@
       <screen x="0" y="23" width="1440" height="835" />
     </state>
     <state x="681" y="168" key="NewPhpClassDialog/0.23.1440.835@0.23.1440.835" timestamp="1629043793797" />
-    <state x="607" y="-906" width="806" height="694" key="find.popup" timestamp="1633549886907">
-      <screen x="-279" y="-1057" width="1920" height="1057" />
+    <state x="664" y="142" width="731" height="548" key="find.popup" timestamp="1634053482022">
+      <screen x="0" y="23" width="1440" height="835" />
     </state>
     <state x="606" y="-912" width="806" height="667" key="find.popup/-279.-1057.1920.1015/0.23.1440.877@-279.-1057.1920.1015" timestamp="1632912036902" />
     <state x="607" y="-906" width="806" height="694" key="find.popup/-279.-1057.1920.1057/0.23.1440.835@-279.-1057.1920.1057" timestamp="1633549886907" />
     <state x="606" y="-906" width="806" height="694" key="find.popup/-279.-1057.1920.1057/0.23.1440.836@-279.-1057.1920.1057" timestamp="1631702850509" />
     <state x="606" y="-906" width="806" height="694" key="find.popup/-279.-1057.1920.1057/0.23.1440.837@-279.-1057.1920.1057" timestamp="1630837303008" />
-    <state x="664" y="142" width="731" height="548" key="find.popup/0.23.1440.835@0.23.1440.835" timestamp="1632952828186" />
+    <state x="664" y="142" width="731" height="548" key="find.popup/0.23.1440.835@0.23.1440.835" timestamp="1634053482022" />
     <state x="521" y="182" width="670" height="676" key="search.everywhere.popup" timestamp="1631136861401">
       <screen x="0" y="23" width="1440" height="835" />
     </state>
