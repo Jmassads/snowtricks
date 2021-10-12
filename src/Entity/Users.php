@@ -383,4 +383,14 @@ class Users implements UserInterface
 
         return $this;
     }
+
+    public function getSalt()
+    {
+
+    }
+
+    public function eraseCredentials()
+    {
+
+    }
 }
