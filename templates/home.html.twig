@@ -8,12 +8,11 @@
 
 {% block body %}
 
-    <header class="p-5 text-center bg-image" style="background-image: url('https://thumbs.dreamstime.com/b/snowboarding-closeup-jump-blue-sky-background-portrait-young-man-winter-ski-season-sports-concept-195035767.jpg');height: 85vh;">
+    <header class="p-5 text-center bg-image" style="background-image: url('https://i.pinimg.com/originals/52/ed/4f/52ed4f59590fa6f9563a068b3286a7d4.jpg');height: 85vh;">
         <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
             <div class="d-flex justify-content-center align-items-center">
                 <div class="text-white">
                     <h1 class="mb-3">{{ title }}</h1>
-                    <h4 class="mb-3">Subheading</h4>
                 </div>
             </div>
         </div>
@@ -31,26 +30,32 @@
                                 <h5 class="card-title">
                                     {{ trick.title }}
                                 </h5>
-                                <p class="card-text">
-                                    {{ trick.description|striptags|slice(0, 40) }}
-                                </p>
+{#                                <p class="card-text">#}
+{#                                    {{ trick.description|striptags|slice(0, 100) }} ...#}
+{#                                </p>#}
                             </div>
                         </a>
                         {% if app.user and (app.user == trick.author or app.user.roles[0] == "ROLE_ADMIN") %}
                             <div class="trick-actions">
 
-                                <a href="{{ path('tricks_edit', {'slug': trick.slug}) }}" class="btn btn-secondary">
-                                    <i class="fas fa-edit"></i>
+                                <a href="{{ path('tricks_edit', {'slug': trick.slug}) }}">
+                                    <i class="far fa-edit"></i>
                                 </a>
-                                <a href="{{ path('tricks_delete', {'slug': trick.slug}) }}" class="btn btn-danger" onclick="return confirm(`Souhaitez vous supperimer votre figure : {{ trick.title }}`)" >
-                                    <i class="fas fa-trash-alt"></i>
+                                <a href="{{ path('tricks_delete', {'slug': trick.slug}) }}" onclick="return confirm(`Souhaitez vous supperimer votre figure : {{ trick.title }}`)" >
+                                    <i class="far fa-trash-alt"></i>
                                 </a>
                             </div>
                         {% endif %}
                     </div>
                 {% endfor %}
+{#                {{ knp_pagination_render(tricks) }}#}
+                <div class="container">
+                    <div class="d-flex justify-content-center m-3">
+                        <a href="#" id="loadMoreTrick"><i class="fas fa-plus-circle fa-2x"></i></a>
+                        <a href="#" id="loadLessTrick"><i class="fas fa-minus-circle fa-2x"></i></a>
+                    </div>
+                </div>
             </div>
-            <button class="load-more" accesskey="m">Load more</button>
         </div>
     </section>
 

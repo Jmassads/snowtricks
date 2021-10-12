@@ -7,16 +7,17 @@
         <div class="container">
             <h1>{{ trick.title }}</h1>
         </div>
-{#        {{ dump(app.user.roles) }}#}
-{#        {{ dump(app.user.roles[0]) }}#}
+        {# {{ dump(app.user.roles) }} #}
+        {# {{ dump(app.user.roles[0]) }} #}
 
-        {% if app.user and (app.user == trick.author or app.user.roles[0] == "ROLE_ADMIN")%}
+        {% if app.user and (app.user == trick.author or app.user.roles[0] == "ROLE_ADMIN") %}
             <div class="trick-actions">
 
                 <a href="{{ path('tricks_edit', {'slug': trick.slug}) }}" class="btn btn-secondary">
                     <i class="fas fa-edit"></i>
                 </a>
-                <a href="{{ path('tricks_delete', {'slug': trick.slug}) }}" class="btn btn-danger" onclick="return confirm(`Souhaitez vous supperimer votre figure : {{ trick.title }}`)" >
+                <a href="{{ path('tricks_delete', {'slug': trick.slug}) }}" class="btn btn-danger"
+                   onclick="return confirm(`Souhaitez vous supperimer votre figure : {{ trick.title }}`)">
                     <i class="fas fa-trash-alt"></i>
                 </a>
             </div>
@@ -26,8 +27,17 @@
         <ul id="lightSlider">
             {% for image in trick.images %}
                 <li>
-                    <div>
+                    <div class="img-container">
                         <img src="{{ image.url }}" alt="">
+                    </div>
+                </li>
+            {% endfor %}
+            {% for video in trick.videos %}
+                <li>
+                    <div class="video-container">
+                        <iframe width="420" height="315"
+                                src="{{ video.url }}">
+                        </iframe>
                     </div>
                 </li>
             {% endfor %}
@@ -36,8 +46,10 @@
     <div class="container">
         <div class="row">
             <p>{{ trick.description | raw }}</p>
+            <div>Catégorie: {{ trick.category.title }}</div>
+            <div>Création : le {{ trick.createdAt|date("m/d/Y") }}</div>
         </div>
-        <div class="row mb-3 align-items-center">
+        <div class="row my-3 align-items-center">
             {% set a = trick.author %}
             <div class="col-1">
                 <a href="{{ path('user_show', {'slug': a.slug}) }}">
@@ -45,39 +57,41 @@
                 </a>
             </div>
             <div class="col-9">
-                <a href="{{ path('user_show', {'slug': a.slug}) }}">
-                    <h3>{{ a.fullName }}</h3>
-                </a>
+                <div class="d-flex">
+                   <div> Créateur de cette figure: <a href="{{ path('user_show', {'slug': a.slug}) }}"><span>{{ a.fullName }}</span> </a></div>
+                </div>
                 <span class="badge bg-secondary">{{ a.tricks | length }} création(s) de figure</span>
             </div>
         </div>
         <div class="row">
-            {{ a.description | raw }}
+            <p>{{ a.description}}</p>
         </div>
 
         <hr>
 
+{#        {{ dump(comments) }}#}
         {% if trick.comments|length > 0 %}
             <h2 class="mb-3">Commentaires de nos utilisateurs:</h2>
-            {%  for comment in trick.comments|sort|reverse %}
+            {% for comment in comments|sort|reverse %}
                 <div class="bg-light rounded mb-3 py-3 px-3">
-                    <strong>{{  comment.author.fullName }}</strong> a dit :
+                    <strong>{{ comment.author.fullName }}</strong> a dit :
                     <blockquote>
                         {{ comment.content }}
                     </blockquote>
                 </div>
-            {%  endfor %}
+            {% endfor %}
+            {{ knp_pagination_render(comments) }}
         {% else %}
             <h2>Cette figure n'a pas encore reçu de commentaires...</h2>
         {% endif %}
 
         {% if app.user %}
-        <div class="mt-4">
-            {{ form_start(form) }}
-            {{ form_widget(form) }}
-            <button type="submit" class="btn btn-success">Envoyez votre commentaire</button>
-            {{ form_end(form) }}
-        </div>
+            <div class="mt-4">
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <button type="submit" class="btn btn-success">Envoyez votre commentaire</button>
+                {{ form_end(form) }}
+            </div>
         {% endif %}
 
     </div>

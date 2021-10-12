@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Categories;
 use App\Entity\Images;
 use App\Entity\Tricks;
+use App\Form\CategoryType;
 use App\Form\TrickType;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectManager;
@@ -24,7 +26,7 @@ class TricksController extends AbstractController
      * @Route("/tricks/new", name="tricks_create")
      * @IsGranted("ROLE_USER")
      * @param Request $request
-     * @param ObjectManager $manager
+     * @param EntityManagerInterface $manager
      * @return Response
      */
     public function create(Request $request, EntityManagerInterface $manager)
@@ -34,16 +36,20 @@ class TricksController extends AbstractController
         $form->handleRequest($request);
 
 
-        dump($trick);
-
         if ($form->isSubmitted() && $form->isValid()) {
-//            $manager = $this->getDoctrine()->getManager();
             foreach ($trick->getImages() as $image) {
                 $image->setTrick($trick);
                 $manager->persist($image);
             }
 
+            foreach ($trick->getVideos() as $video) {
+                $video->setTrick($trick);
+                $manager->persist($video);
+            }
+
             $trick->setAuthor($this->getUser());
+
+            $trick->setCreatedAt(new \DateTimeImmutable());
 
             $manager->persist($trick);
             $manager->flush();
@@ -56,8 +62,9 @@ class TricksController extends AbstractController
                 'slug' => $trick->getSlug()
             ]);
         }
+
         return $this->render('tricks/new.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
         ]);
     }
 
@@ -79,6 +86,10 @@ class TricksController extends AbstractController
             foreach ($trick->getImages() as $image) {
                 $image->setTrick($trick);
                 $manager->persist($image);
+            }
+            foreach ($trick->getVideos() as $video) {
+                $video->setTrick($trick);
+                $manager->persist($video);
             }
             $manager->persist($trick);
             $manager->flush();

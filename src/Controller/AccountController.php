@@ -2,14 +2,20 @@
 
 namespace App\Controller;
 
+use App\Entity\Categories;
+use App\Entity\Tricks;
 use App\Entity\Users;
 use App\Form\AccountType;
+use App\Form\CategoryType;
 use App\Form\RegistrationType;
+use App\Repository\UsersRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectManager;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
@@ -42,7 +48,7 @@ class AccountController extends AbstractController
      *
      * @return void
      */
-    public function logout() : Response
+    public function logout(): Response
     {
 
     }
@@ -54,24 +60,44 @@ class AccountController extends AbstractController
      * @param Request $request
      * @param EntityManagerInterface $manager
      * @param UserPasswordEncoderInterface $encoder
+     * @param MailerInterface $mailer
      * @return Response
+     * @throws \Symfony\Component\Mailer\Exception\TransportExceptionInterface
+     * @throws \Exception
      */
-    public function register (Request $request, EntityManagerInterface $manager, UserPasswordEncoderInterface $encoder){
+    public function register(Request $request, EntityManagerInterface $manager, UserPasswordEncoderInterface $encoder, MailerInterface $mailer)
+    {
         $user = new Users();
 
         $form = $this->createForm(RegistrationType::class, $user);
 
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             $hash = $encoder->encodePassword($user, $user->getHash());
-            $user->setHash($hash);
+            $user->setHash($hash)
+                ->setToken(md5(random_bytes(10)))
+                ->setActivated(false);
+
+
             $manager->persist($user);
             $manager->flush();
 
+            $email = (new TemplatedEmail())
+                ->from('noreply@snowtricks.com')
+                ->to($user->getEmail())
+                ->subject('thanks for signing up!')
+                ->htmlTemplate('emails/validation.html.twig')
+                ->context([
+                        'user' => $user
+                    ]
+                );
+            $mailer->send($email);
+
+
             $this->addFlash(
                 'success',
-                "Votre compte a bien été crée ! Vous pouvez maintenant vous connecter"
+                "Un mail vous a été envoyé pour activer votre compte !"
             );
 
             return $this->redirectToRoute("account_login");
@@ -83,6 +109,42 @@ class AccountController extends AbstractController
     }
 
     /**
+     * Validation de l'email après une inscription
+     *
+     * @Route("/email-validation/{username}/{token}", name="email_validation")
+     * @param UsersRepository $repo
+     * @param $username
+     * @param $token
+     * @param EntityManagerInterface $manager
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function emailValidation(UsersRepository $repo, $username, $token, EntityManagerInterface $manager)
+    {
+        $user = $repo->findOneByusername($username);
+
+        if($token != null && $token === $user->getToken())
+        {
+            $user->setValidated(true);
+            $manager->persist($user);
+            $manager->flush();
+
+            $this->addFlash(
+                'success',
+                "Votre compte a été activé avec succès ! Vous pouvez désormais vous connecter !"
+            );
+        }
+        else
+        {
+            $this->addFlash(
+                'danger',
+                "La validation de votre compte a échoué. Le lien de validation a expiré !"
+            );
+        }
+
+        return $this->redirectToRoute('account_login');
+    }
+
+    /**
      * Permet d'afficher et de traiter le formulaire de modification de profil
      *
      * @Route("/account/profile", name="account_profile")
@@ -91,12 +153,13 @@ class AccountController extends AbstractController
      * @param EntityManagerInterface $manager
      * @return Response
      */
-    public function profile(Request $request, EntityManagerInterface $manager){
+    public function profile(Request $request, EntityManagerInterface $manager)
+    {
         $user = $this->getUser();
         $form = $this->createForm(AccountType::class, $user);
 
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             $manager->persist($user);
             $manager->flush();
 
@@ -116,11 +179,17 @@ class AccountController extends AbstractController
      *
      * @Route("/account", name="account_index")
      *
+     * @param EntityManagerInterface $manager
+     * @param Request $request
      * @return Response
      */
-    public function myAccount(){
+    public function myAccount(EntityManagerInterface $manager, Request $request)
+    {
+
+
         return $this->render("user/index.html.twig", [
-            'user' => $this->getUser()
+            'user' => $this->getUser(),
+
         ]);
     }
 }

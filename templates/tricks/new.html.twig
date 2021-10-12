@@ -12,7 +12,17 @@
         <input type="hidden" id="widgets-counter" value="0">
         <button type="submit" class="btn btn-primary">Créer la figure</button>
         {{ form_end(form) }}
+
+        <div class="mt-5">
+            Si vous souhaitez ajouter une nouvelle catégorie, veuillez cliquer sur ce
+            <a href="{{ path('categories_create') }}">
+                lien
+            </a>
+        </div>
     </div>
+
+
+
 {% endblock %}
 
 {% block _trick_images_widget %}
@@ -37,6 +47,35 @@
                     </div>
                     <div class="col mb-3">
                         {{ form_widget(form.caption) }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-2">
+                <button type="button" data-action="delete" data-target="#block_{{ id }}" class="btn btn-danger">X</button>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block _trick_videos_widget %}
+    <p>Ici, vous pouvez ajouter vos propres videos</p>
+    {{ form_widget(form) }}
+    <div class="form-group">
+        <button type="button" id="add-video" class="btn btn-primary">Ajouter une video</button>
+    </div>
+{% endblock %}
+
+{% block _trick_videos_entry_row %}
+    {{ form_widget(form) }}
+{% endblock %}
+
+{% block _trick_videos_entry_widget %}
+    <div class="form-group" id="block_{{ id }}">
+        <div class="row">
+            <div class="col-10">
+                <div class="row">
+                    <div class="col mb-3">
+                        {{ form_widget(form.url) }}
                     </div>
                 </div>
             </div>

@@ -62,10 +62,21 @@ class Tricks
      */
     private $createdAt;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Videos::class, mappedBy="trick", orphanRemoval=true)
+     */
+    private $videos;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Categories::class, inversedBy="tricks")
+     */
+    private $category;
+
     public function __construct()
     {
         $this->Images = new ArrayCollection();
         $this->comments = new ArrayCollection();
+        $this->videos = new ArrayCollection();
     }
 
     /**
@@ -216,6 +227,48 @@ class Tricks
     public function setCreatedAt(\DateTimeImmutable $createdAt): self
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Videos[]
+     */
+    public function getVideos(): Collection
+    {
+        return $this->videos;
+    }
+
+    public function addVideo(Videos $video): self
+    {
+        if (!$this->videos->contains($video)) {
+            $this->videos[] = $video;
+            $video->setTrick($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVideo(Videos $video): self
+    {
+        if ($this->videos->removeElement($video)) {
+            // set the owning side to null (unless already changed)
+            if ($video->getTrick() === $this) {
+                $video->setTrick(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getCategory(): ?Categories
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Categories $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }

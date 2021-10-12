@@ -40,6 +40,22 @@ $(document).ready(function() {
         handleDeleteButtons();
     });
 
+    $('#add-video').click(function () {
+        //Je recupere le numero des futurs champs que je vais creer
+        const index = +$('#widgets-counter').val();
+
+        console.log(index);
+        // Je recupere le prototype des entrees
+        const tmpl = $('#trick_videos').data('prototype').replace(/__name__/g, index);
+        // console.log(tmpl);
+
+        //j'injecte ce code au sein de la div
+        $('#trick_videos').append(tmpl);
+        $('#widgets-counter').val(index + 1);
+        //Je gere le bouton supprimer
+        handleDeleteButtons();
+    });
+
     function handleDeleteButtons(){
         $('button[data-action="delete"]').click(function(){
             const target = this.dataset.target;
@@ -49,4 +65,22 @@ $(document).ready(function() {
     }
 
     handleDeleteButtons();
+
+    $(".trick").slice(0, 6).show();
+    $("#loadMoreTrick").on("click", function (e) {
+        e.preventDefault();
+        $("div.trick:hidden").slice(0, 6).slideDown();
+        if ($("div.trick:hidden").length === 0) {
+            $("#loadMoreTrick").hide("slow");
+            $("#loadLessTrick").show("slow");
+        }
+    });
+    $("#loadLessTrick").on("click", function (e) {
+        e.preventDefault();
+        $("div.trick").slice(6, $("div.trick").length).hide();
+        $("#loadLessTrick").hide("slow");
+        $("#loadMoreTrick").show("slow");
+
+    });
 });
+

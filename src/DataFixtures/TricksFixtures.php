@@ -2,11 +2,13 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Categories;
 use App\Entity\Comment;
 use App\Entity\Images;
 use App\Entity\Role;
 use App\Entity\Tricks;
 use App\Entity\Users;
+use App\Entity\Videos;
 use Cocur\Slugify\Slugify;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -42,6 +44,8 @@ class TricksFixtures extends Fixture
             ->setPicture('https://avatars0.githubusercontent.com/u/22447803?s=400&u=453226f708a7c2242a639882fde1ec32ffa78918&v=4')
             ->setIntroduction($faker->sentence)
             ->setDescription($description)
+            ->setValidated(true)
+            ->setUsername('jmassads')
             ->addUserRole($adminRole);
         $manager->persist($adminUser);
 
@@ -58,8 +62,19 @@ class TricksFixtures extends Fixture
         } else {
             $picture = $picture . 'women/' . $pictureId;
         }
+
+        $categories = [];
+        for ($c = 1; $c <= 1 ; $c++) {
+            $category = new Categories();
+            $category
+                ->setTitle($faker->text(50));
+
+            $manager->persist($category);
+            $categories[] = $category;
+        }
+
         // Nous gérons les utilisateurs
-        for ($i = 1; $i <= 10; $i++) {
+        for ($i = 1; $i <= 1; $i++) {
             $user = new Users();
             $description = '<p>' . join($faker->paragraphs(5)) . '</p>';
 
@@ -70,14 +85,16 @@ class TricksFixtures extends Fixture
                 ->setEmail($faker->email)
                 ->setIntroduction($faker->sentence())
                 ->setDescription($description)
-                ->setHash($hash);
+                ->setHash($hash)
+                ->setUsername($faker->userName);
+
 
             $manager->persist($user);
             $users[] = $user;
         }
 
         // Nous gerons les figures
-        for ($i = 1; $i <= 10; $i++) {
+        for ($i = 1; $i <= 1; $i++) {
             $trick = new Tricks();
             $user = $users[mt_rand(0, count($users) - 1)];
             $title = $faker->sentence();
@@ -88,7 +105,9 @@ class TricksFixtures extends Fixture
                 ->setCoverImage($faker->imageUrl(1920, 350))
                 ->setDescription($description)
                 ->setAuthor($user)
-                ->setCreatedAt(new \DateTimeImmutable());
+                ->setCreatedAt(new \DateTimeImmutable())
+                ->setCategory($categories[$faker->numberBetween(0,1)]);
+
 
 
 
@@ -101,6 +120,16 @@ class TricksFixtures extends Fixture
 
                 $manager->persist($image);
             }
+
+            for ($k = 1; $k <= mt_rand(2, 5); $k++) {
+                $video = new Videos();
+                $video
+                    ->setUrl('https://www.youtube.com/embed/tgbNymZ7vqY')
+                    ->setTrick($trick);
+
+                $manager->persist($video);
+            }
+
             $manager->persist($trick);
 
             // Gestion de commentaires

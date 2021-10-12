@@ -75,7 +75,7 @@ class Users implements UserInterface
 
     /**
      * @ORM\Column(type="text")
-     * @Assert\Length(min=100, minMessage="Votre description doit faire au moins 100 caractères")
+     * @Assert\Length(min=10, minMessage="Votre description doit faire au moins 10 caractères")
      */
     private $description;
 
@@ -98,6 +98,23 @@ class Users implements UserInterface
      * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="author", orphanRemoval=true)
      */
     private $comments;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $Token;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $Validated;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank(message="Veuillez renseigner un nom d'utilisateur")
+     * @Assert\Length(max=50, maxMessage="Votre nom d'utilisateur ne doit pas dépasser 50 caractères")
+     */
+    private $username;
 
     public function __construct()
     {
@@ -284,11 +301,6 @@ class Users implements UserInterface
         // TODO: Implement eraseCredentials() method.
     }
 
-    public function getUsername()
-    {
-        return $this->email;
-    }
-
     public function __call($name, $arguments)
     {
         // TODO: Implement @method string getUserIdentifier()
@@ -347,6 +359,42 @@ class Users implements UserInterface
                 $comment->setAuthor(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getToken(): ?string
+    {
+        return $this->Token;
+    }
+
+    public function setToken(?string $Token): self
+    {
+        $this->Token = $Token;
+
+        return $this;
+    }
+
+    public function getValidated(): ?bool
+    {
+        return $this->Validated;
+    }
+
+    public function setValidated(?bool $Validated): self
+    {
+        $this->Validated = $Validated;
+
+        return $this;
+    }
+
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    public function setUsername(?string $username): self
+    {
+        $this->username = $username;
 
         return $this;
     }
