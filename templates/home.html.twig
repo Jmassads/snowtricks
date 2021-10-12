@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+
+    Page Accueil
+
+{% endblock %}
+
+{% block body %}
+
+    <header class="p-5 text-center bg-image" style="background-image: url('https://i.pinimg.com/originals/52/ed/4f/52ed4f59590fa6f9563a068b3286a7d4.jpg');height: 85vh;">
+        <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+            <div class="d-flex justify-content-center align-items-center">
+                <div class="text-white">
+                    <h1 class="mb-3">{{ title }}</h1>
+                </div>
+            </div>
+        </div>
+        <a class="btn btn-outline-light btn-lg call-to-action" href="#!" role="button">Call to action</a>
+    </header>
+
+    <section class="tricks mt-5">
+        <div class="container">
+            <div class="row">
+                {% for trick in tricks %}
+                    <div class="col-md-4 trick">
+                        <a href="{{ path('tricks_show', {'slug' : trick.slug}) }}" class="card bg-light mb-3 text-black text-decoration-none">
+                            <img src="{{ trick.coverImage }}" alt="">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    {{ trick.title }}
+                                </h5>
+{#                                <p class="card-text">#}
+{#                                    {{ trick.description|striptags|slice(0, 100) }} ...#}
+{#                                </p>#}
+                            </div>
+                        </a>
+                        {% if app.user and (app.user == trick.author or app.user.roles[0] == "ROLE_ADMIN") %}
+                            <div class="trick-actions">
+
+                                <a href="{{ path('tricks_edit', {'slug': trick.slug}) }}">
+                                    <i class="far fa-edit"></i>
+                                </a>
+                                <a href="{{ path('tricks_delete', {'slug': trick.slug}) }}" onclick="return confirm(`Souhaitez vous supperimer votre figure : {{ trick.title }}`)" >
+                                    <i class="far fa-trash-alt"></i>
+                                </a>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+{#                {{ knp_pagination_render(tricks) }}#}
+                <div class="container">
+                    <div class="d-flex justify-content-center m-3">
+                        <a href="#" id="loadMoreTrick"><i class="fas fa-plus-circle fa-2x"></i></a>
+                        <a href="#" id="loadLessTrick"><i class="fas fa-minus-circle fa-2x"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+

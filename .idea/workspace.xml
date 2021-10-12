@@ -1,15 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="4038b30b-f877-485f-85b2-4b10a6dcca0b" name="Default Changelist" comment="" />
+    <list default="true" id="4038b30b-f877-485f-85b2-4b10a6dcca0b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/config/packages/paginator.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/snowtricks.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/knppaginator-ajax.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Security/UserChecker.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/emails/validation.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/snowtricks.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/snowtricks.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/assets.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/assets.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210915091834.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20210915091834.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/AccountController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AccountController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/TricksController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TricksController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/TricksFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/TricksFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Tricks.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Tricks.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Users.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Users.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/RegistrationType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/RegistrationType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/TrickType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/TrickType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/account/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/login.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/partials/header.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/header.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/tricks/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tricks/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/tricks/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tricks/new.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/tricks/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tricks/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/index.html.twig" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -143,6 +203,16 @@
       <path value="$PROJECT_DIR$/vendor/sebastian/resource-operations" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-common" />
       <path value="$PROJECT_DIR$/vendor/friendsofphp/proxy-manager-lts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/webpack-encore-bundle" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/data-fixtures" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
+      <path value="$PROJECT_DIR$/vendor/fzaninotto/faker" />
+      <path value="$PROJECT_DIR$/vendor/cocur/slugify" />
+      <path value="$PROJECT_DIR$/vendor/knplabs/knp-components" />
+      <path value="$PROJECT_DIR$/vendor/knplabs/knp-paginator-bundle" />
+      <path value="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/swiftmailer-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/google-mailer" />
     </include_path>
   </component>
   <component name="ProjectId" id="1wgAgnIzbmzhZIU6gTPmBhfMi9G" />
@@ -154,7 +224,16 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/images" />
+      <recent name="$PROJECT_DIR$/templates/partials" />
+      <recent name="$PROJECT_DIR$/public/js" />
+      <recent name="$PROJECT_DIR$/public/css" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml.dist" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -172,11 +251,92 @@
       <updated>1628869972937</updated>
       <workItem from="1628869974052" duration="16000" />
       <workItem from="1628870014836" duration="5000" />
-      <workItem from="1628870024739" duration="329000" />
+      <workItem from="1628870024739" duration="1207000" />
+      <workItem from="1628871247951" duration="664000" />
+      <workItem from="1628871946916" duration="116000" />
+      <workItem from="1628872076266" duration="79000" />
+      <workItem from="1628872256149" duration="458000" />
+      <workItem from="1628872742492" duration="729000" />
+      <workItem from="1628873506956" duration="3014000" />
+      <workItem from="1628928836934" duration="1512000" />
+      <workItem from="1628930447676" duration="87865000" />
+      <workItem from="1630487090055" duration="6347000" />
+      <workItem from="1630580296527" duration="1689000" />
+      <workItem from="1630835787546" duration="5312000" />
+      <workItem from="1630875199150" duration="496000" />
+      <workItem from="1631113412992" duration="1778000" />
+      <workItem from="1631136433468" duration="1805000" />
+      <workItem from="1631184530740" duration="910000" />
+      <workItem from="1631185711242" duration="627000" />
+      <workItem from="1631689491491" duration="19802000" />
+      <workItem from="1631789769560" duration="635000" />
+      <workItem from="1632304650339" duration="215000" />
+      <workItem from="1632305467326" duration="20478000" />
+      <workItem from="1632395306873" duration="615000" />
+      <workItem from="1632909129348" duration="16151000" />
+      <workItem from="1632946875276" duration="279000" />
+      <workItem from="1632947194426" duration="7926000" />
+      <workItem from="1633000279030" duration="1247000" />
+      <workItem from="1633539535183" duration="3682000" />
+      <workItem from="1633604298823" duration="420000" />
+      <workItem from="1634047737086" duration="530000" />
+      <workItem from="1634052505479" duration="111000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.env" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="726" y="166" key="#com.intellij.ide.util.MemberChooser" timestamp="1629757045145">
+      <screen x="0" y="23" width="1440" height="835" />
+    </state>
+    <state x="726" y="166" key="#com.intellij.ide.util.MemberChooser/0.23.1440.835@0.23.1440.835" timestamp="1629757045145" />
+    <state x="721" y="268" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1630222504520">
+      <screen x="0" y="23" width="1440" height="835" />
+    </state>
+    <state x="721" y="268" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1440.835@0.23.1440.835" timestamp="1630222504520" />
+    <state x="681" y="168" key="NewPhpClassDialog" timestamp="1629043793797">
+      <screen x="0" y="23" width="1440" height="835" />
+    </state>
+    <state x="681" y="168" key="NewPhpClassDialog/0.23.1440.835@0.23.1440.835" timestamp="1629043793797" />
+    <state x="607" y="-906" width="806" height="694" key="find.popup" timestamp="1633549886907">
+      <screen x="-279" y="-1057" width="1920" height="1057" />
+    </state>
+    <state x="606" y="-912" width="806" height="667" key="find.popup/-279.-1057.1920.1015/0.23.1440.877@-279.-1057.1920.1015" timestamp="1632912036902" />
+    <state x="607" y="-906" width="806" height="694" key="find.popup/-279.-1057.1920.1057/0.23.1440.835@-279.-1057.1920.1057" timestamp="1633549886907" />
+    <state x="606" y="-906" width="806" height="694" key="find.popup/-279.-1057.1920.1057/0.23.1440.836@-279.-1057.1920.1057" timestamp="1631702850509" />
+    <state x="606" y="-906" width="806" height="694" key="find.popup/-279.-1057.1920.1057/0.23.1440.837@-279.-1057.1920.1057" timestamp="1630837303008" />
+    <state x="664" y="142" width="731" height="548" key="find.popup/0.23.1440.835@0.23.1440.835" timestamp="1632952828186" />
+    <state x="521" y="182" width="670" height="676" key="search.everywhere.popup" timestamp="1631136861401">
+      <screen x="0" y="23" width="1440" height="835" />
+    </state>
+    <state x="521" y="182" width="670" height="676" key="search.everywhere.popup/0.23.1440.835@0.23.1440.835" timestamp="1631136861401" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/src/Controller/TricksController.php</url>
+          <line>38</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
