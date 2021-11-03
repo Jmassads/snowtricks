@@ -28,10 +28,8 @@ $(document).ready(function() {
         //Je recupere le numero des futurs champs que je vais creer
         const index = +$('#widgets-counter').val();
 
-        console.log(index);
         // Je recupere le prototype des entrees
         const tmpl = $('#trick_images').data('prototype').replace(/__name__/g, index);
-        // console.log(tmpl);
 
         //j'injecte ce code au sein de la div
         $('#trick_images').append(tmpl);
@@ -42,7 +40,7 @@ $(document).ready(function() {
 
     $('#add-video').click(function () {
         //Je recupere le numero des futurs champs que je vais creer
-        const index = +$('#widgets-counter').val();
+        const index = +$('#videos-counter').val();
 
         console.log(index);
         // Je recupere le prototype des entrees
@@ -51,7 +49,7 @@ $(document).ready(function() {
 
         //j'injecte ce code au sein de la div
         $('#trick_videos').append(tmpl);
-        $('#widgets-counter').val(index + 1);
+        $('#videos-counter').val(index + 1);
         //Je gere le bouton supprimer
         handleDeleteButtons();
     });
@@ -65,6 +63,26 @@ $(document).ready(function() {
     }
 
     handleDeleteButtons();
+
+    function updateImagesCounter(){
+        const count = +$('#trick_images .form-group').length;
+
+        console.log(count);
+
+        $('#widgets-counter').val(count);
+    }
+
+    updateImagesCounter();
+
+    function updateVideosCounter(){
+        const count = +$('#trick_videos .form-group').length;
+
+        console.log(count);
+
+        $('#videos-counter').val(count);
+    }
+
+    updateVideosCounter();
 
     $(".trick").slice(0, 6).show();
     $("#loadMoreTrick").on("click", function (e) {
