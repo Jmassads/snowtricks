@@ -82,7 +82,6 @@ class TricksController extends AbstractController
         $form = $this->createForm(TrickType::class, $trick);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-//            $manager = $this->getDoctrine()->getManager();
             foreach ($trick->getImages() as $image) {
                 $image->setTrick($trick);
                 $manager->persist($image);
@@ -128,3 +127,4 @@ class TricksController extends AbstractController
         return $this->redirectToRoute("account_index");
     }
 }
+
