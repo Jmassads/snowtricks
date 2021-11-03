@@ -25,16 +25,6 @@ class HomeController extends AbstractController {
     public function home(TricksRepository $repo, Request $request, PaginatorInterface $paginator)
     {
         $tricks = $repo->findAll();
-//        $donnees = $repo->findBy(
-//                array(),
-//                array('createdAt' => 'ASC') // order criteria
-//            );
-
-//        $tricks = $paginator->paginate(
-//            $donnees, // On passe les donnees
-//            $request->query->getInt('page', 1), //Numero page en cours
-//            6
-//        );
         return $this->render(
             'home.html.twig',
             [
@@ -56,7 +46,6 @@ class HomeController extends AbstractController {
      */
     public function show($slug, Tricks $trick, Request $request, EntityManagerInterface $manager, PaginatorInterface $paginator){
         // Je récupère le trick qui correspond au slug
-//        $trick = $repo->findOneBySlug($slug);
         $comment = new Comment();
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
@@ -89,4 +78,5 @@ class HomeController extends AbstractController {
     }
 
 }
+
 

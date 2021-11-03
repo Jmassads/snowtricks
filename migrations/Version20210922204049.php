@@ -20,7 +20,6 @@ final class Version20210922204049 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-//        $this->addSql('ALTER TABLE tricks CHANGE created_at created_at DATETIME NOT NULL COMMENT \'(DC2Type:datetime_immutable)\'');
         $this->addSql('ALTER TABLE users ADD token VARCHAR(255) DEFAULT NULL, ADD validated TINYINT(1) DEFAULT NULL');
     }
 
