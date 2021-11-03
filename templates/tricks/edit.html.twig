@@ -9,7 +9,6 @@
         <h1>Modifier la figure : {{ trick.title }}</h1>
         {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="hidden" id="widgets-counter" value="0">
         <button type="submit" class="btn btn-primary">Modifier la figure</button>
         {{ form_end(form) }}
     </div>
@@ -18,6 +17,7 @@
 {% block _trick_images_widget %}
     <p>Ici, vous pouvez ajouter vos propres images</p>
     {{ form_widget(form) }}
+    <input type="hidden" id="widgets-counter" value="">
     <div class="form-group">
         <button type="button" id="add-image" class="btn btn-primary">Ajouter une image</button>
     </div>
@@ -50,6 +50,7 @@
 {% block _trick_videos_widget %}
     <p>Ici, vous pouvez ajouter vos propres videos</p>
     {{ form_widget(form) }}
+    <input type="hidden" id="videos-counter" value="0">
     <div class="form-group">
         <button type="button" id="add-video" class="btn btn-primary">Ajouter une video</button>
     </div>
