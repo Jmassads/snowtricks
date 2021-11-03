@@ -122,7 +122,7 @@ class AccountController extends AbstractController
     {
         $user = $repo->findOneByusername($username);
 
-        if($token != null && $token === $user->getToken())
+        if($token !== null && $token === $user->getToken())
         {
             $user->setValidated(true);
             $manager->persist($user);
