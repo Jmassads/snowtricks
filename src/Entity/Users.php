@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
@@ -273,10 +274,13 @@ class Users implements UserInterface
         return $this;
     }
 
+    /**
+     * @return array
+     */
     public function getRoles(): array
     {
         $roles = $this->userRoles->toArray();
-        $roles = $this->userRoles->map(function($role){
+        $roles = $this->userRoles->map(function(string $role){
             return $role->getTitle();
         })->toArray();
         $roles[] = 'ROLE_USER';
